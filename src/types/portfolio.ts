@@ -38,6 +38,7 @@ export interface HomePageData {
     imageUrl: string;
     caption: string;
     altText: string;
+    icon: string;
   }
   
   // Project Details page
