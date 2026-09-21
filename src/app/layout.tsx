@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { TechTags } from "@/components/TechTags";
 import { Footer } from "@/components/Footer";
+import RootClientWrapper from "@/components/RootClientWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,13 +28,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-      <Header />
-      <TechTags label="React" variant="solid" />
-      <TechTags label="Typescript" variant="glass" />
-      <TechTags label="CSS" variant="solid" />
-        
-        {children}
-        <Footer />
+        <RootClientWrapper>
+          <Header />
+          <TechTags label="React" variant="solid" />
+          <TechTags label="Typescript" variant="glass" />
+          <TechTags label="CSS" variant="solid" />  
+            {children}
+          <Footer />
+        </RootClientWrapper>
         </body>
 
     </html>
