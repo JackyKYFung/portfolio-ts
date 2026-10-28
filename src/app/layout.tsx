@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, Space_Mono } from 'next/font/google';
 import "@/app/globals.css";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import RootClientWrapper from "@/components/RootClientWrapper";
-//import { getGlobalSettings } from "@/lib/wp"; 
+import { Header } from "@/components/commons/Header";
+import { Footer } from "@/components/commons/Footer";
+import RootClientWrapper from "@/components/commons/RootClientWrapper";
+import { getGlobalSettings } from "@/lib/wp"; 
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -22,7 +22,16 @@ export const metadata: Metadata = {
   description: "Personal portfolio showcasing headless WordPress and Next.js projects.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+
+  const globalPageData = await getGlobalSettings();
+  
+  const contactLinks = {
+    contact_email: globalPageData?.acf?.contact_email || "j12funki@gmail.com",
+    linkedin_url: globalPageData?.acf?.linkedin_url || "https://www.linkedin.com/in/jacky-fung/",
+  };
+
   return (
     <html
       lang="en"
@@ -31,7 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="antialiased bg-[#111] text-white px-10 py-15 md:max-w-3xl lg:max-w-4xl mx-auto">
           
           {/* 1. MOUNT THE CLIENT DRAWERS SEPARATELY OUTSIDE THE CONTENT TREE */}
-          <RootClientWrapper />
+          <RootClientWrapper contactData={contactLinks} />
 
           {/* 2. KEEP YOUR CORE PAGE CONTENT ON THE PURE SERVER TRACK */}
           <div 

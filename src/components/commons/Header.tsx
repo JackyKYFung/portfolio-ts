@@ -13,7 +13,7 @@ import {
   type LucideIcon 
 } from 'lucide-react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
-import { triggerContactSlider } from "@/components/RootClientWrapper";
+import { triggerContactSlider } from "@/components/commons/RootClientWrapper";
 
 // Base interface for visual layout/positioning for nav items
 interface BaseNavItem {

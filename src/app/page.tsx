@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Typewriter } from "@/components/Typewriter";
+import { Typewriter } from "@/components/commons/Typewriter";
 
 export default function Home() {
   return (
