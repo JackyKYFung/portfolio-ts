@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-// import { Skills } from "@/app/components/Skills";
+import { Skills } from "@/components/about/Skills";
 // import PhotoGallery from "@/app/components/PhotoGallery";
 // import OrbitalGrid from "./OrbitalGrid";
 // import { Experience } from "./Experience";
@@ -45,6 +45,7 @@ export default async function AboutPage() {
 
     const rawPageObject = Array.isArray(pageData) ? pageData[0] : pageData;
     const upcomingProjData = rawPageObject?.acf?.upcoming_projects || "";
+    const acfData = rawPageObject?.acf || {};
 
     return (
         <div className="flex flex-col gap-16 py-10">
@@ -87,7 +88,7 @@ export default async function AboutPage() {
             {/* Right Side: Skills + Upcoming Projects */}
             <div className="lg:col-span-6 pt-5">
               <div className="mb-10">
-                {/* <Skills acfData={acf} /> */}
+                <Skills acfData={acfData} />
                 Skills Section
               </div>
     
